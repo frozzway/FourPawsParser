@@ -86,9 +86,11 @@ class Category:
         headers = self._get_product_exported_headers(products[0])
         ws.append(headers)
         for prod in products:
-            ws.append(self._get_product_row(prod))
+            if prod.available:
+                ws.append(self._get_product_row(prod))
             for variant_prod in prod.variants:
-                ws.append(self._get_product_row(variant_prod))
+                if variant_prod.available:
+                    ws.append(self._get_product_row(variant_prod))
 
         wb.save('output.xlsx')
 
