@@ -223,15 +223,13 @@ class Category:
         return product
 
 
-async def supervisor():
+async def supervisor(category_id: int):
     token = client.get(f'{base_url}/{token_endpoint}').json()['data']['token']
-    category = Category(2, token)
+    category = Category(category_id, token)
     await category.parse()
     category.export_to_excel()
-    pass
 
 
 if __name__ == '__main__':
-    asyncio.run(supervisor())
-    pass
+    asyncio.run(supervisor(category_id=2))
 
