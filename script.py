@@ -174,7 +174,7 @@ class Category:
                 print('Success async request')
                 return response
             await asyncio.sleep(2)
-            print(f'Failed {attempts} attempts to make request')
+        print(f'Failed {attempts} attempts to make request')
 
     async def _get_chunked_products_prices(self, async_client: AsyncClient, chunked_products_ids: list[int]):
         params = {}
